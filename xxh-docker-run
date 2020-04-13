@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+echo 'xxh-plugin-prerun-docker: Details: https://docs.docker.com/engine/security/rootless/'
+echo 'xxh-plugin-prerun-docker: Run rootless docker...'
+CDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+mkdir -p $XXH_DOCKER_RUNTIME
+HOME=$XXH_DOCKER_HOME XDG_RUNTIME_DIR=$XXH_DOCKER_RUNTIME $CDIR/docker-rootless/dockerd-rootless.sh --experimental --iptables=false --storage-driver vfs > $XXH_DOCKER_LOG 2> $XXH_DOCKER_LOG &
+sleep 1 && chmod -R 777 $XXH_DOCKER_RUNTIME # Suppress in the future: cannot remove '.docker/runtime/docker/libnetwork/0297de6f19a7.sock': Permission denied
+echo "xxh-plugin-prerun-docker: Logs are in $XXH_DOCKER_LOG"
+echo "xxh-plugin-prerun-docker: Use 'xxh-docker-stop' to stop your docker on this host."
+echo "xxh-plugin-prerun-docker: Try 'docker ps' command to check your docker on this host."
