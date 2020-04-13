@@ -3,4 +3,4 @@
 echo 'xxh-plugin-prerun-docker: Details: https://docs.docker.com/engine/security/rootless/'
 echo 'xxh-plugin-prerun-docker: Stop rootless docker'
 killall rootlesskit
-chmod -R 777 $XXH_DOCKER_RUNTIME
+chmod -R 777 $XXH_DOCKER_RUNTIME # Suppress in the future: cannot remove '.docker/runtime/docker/libnetwork/0297de6f19a7.sock': Permission denied
