@@ -16,7 +16,7 @@ xxh myhost +if
 ## Usage
 ```
 myhost> xxh-docker-run
-myhost> docker ps                                                                                                                                                                                                                            
+myhost> docker ps
 CONTAINER ID        IMAGE               COMMAND
 myhost> docker run --rm hello-world | grep Hello
 Hello from Docker!
